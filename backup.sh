@@ -11,7 +11,17 @@ function total_files {
 	find $1 -type f | wc -l
 }
 
+#function total_directories counts the no. of dirs.
+function total_directories {
+	find $1 -type d | wc -l
+}
+
 tar -czf $output $input 2> /dev/null
+
+echo -n "Total de archivos incluidos:"
+total_files $input
+echo -n "Total de directorios incluidos:"
+total_directories $input
 
 echo "Respaldo completado!"
 
